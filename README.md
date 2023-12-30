@@ -21,17 +21,17 @@ This is to demonstrate how [ZenML](https://github.com/zenml-io/zenml) empowers t
 Needed Python libraries for this project.
 
 - Clone the project:
-    '''bash
+    ```bash
     $ git clone https://github.com/NehaDas25/Customer-Satisfaction-using-ZenML.git
     $ cd Customer-Satisfaction-using-ZenML
     $ pip install -r requirements.txt
-    '''
+    ```
     Install all the dependencies required.
 
 - Install ZenML 0.20.0 for React based dashboard: This allows you to observe your stacks, stack components and pipeline statuses in dashboard of ZenML. [To Launch the ZenML Server and dashboard locally](https://docs.zenml.io/user-guide/starter-guide#explore-the-dashboard), but first install the dependencies.
-    ''' bash
+    ``` bash
     $ pip install zenml["server"]
     $ zenml up
-    '''
+    ```
 
 
