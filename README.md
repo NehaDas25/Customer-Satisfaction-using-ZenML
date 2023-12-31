@@ -34,4 +34,27 @@ Needed Python libraries for this project.
     $ zenml up
     ```
 
+- Install mlflow - If you want to run using run_deployment and use experiment tracker, you need to install mlflow.
+    ``` bash
+    $ zenml integration install mlflow -y
+
+- Register experiment-tracker with mlflow using zenml:
+    ``` bash
+    $ zenml experiment-tracker register mlflow_tracker --flavor=mlflow
+
+- To view the stacks registered with the orchestrator use the below:
+    ``` bash
+    $ zenml stack list
+
+- Register model deployer with mlflow:
+    ``` bash
+    $ zenml model-deployer register mlflow --flavor=mlflow
+
+- Register stack with mlflow for the experiment tracker and deployment orchestration created:
+    ``` bash
+    $ zenml stack register mlflow_stack -a default -o default -d mlflow -e mlflow_tracker --set
+
+- Register backend-url with mlflow:
+    ``` bash
+    $ mlflow ui --backend-store-uri "file:C:\Users\ndas\AppData\Roaming\zenml\local_stores\f8f651c2-3f39-4eb7-b6ac-d6abd101a552\mlruns"
 

@@ -18,7 +18,7 @@ from .config import ModelNameConfig
 experiment_tracker = Client().active_stack.experiment_tracker
 
 
-@step
+@step(experiment_tracker=experiment_tracker.name)
 def train_model(
     X_train: pd.DataFrame,
     X_test: pd.DataFrame,
@@ -40,16 +40,16 @@ def train_model(
         tuner = None
 
         if config.model_name == "lightgbm":
-            #mlflow.lightgbm.autolog()
+            mlflow.lightgbm.autolog()
             model = LightGBMModel()
         elif config.model_name == "randomforest":
-            # mlflow.sklearn.autolog()
+            mlflow.sklearn.autolog()
             model = RandomForestModel()
         elif config.model_name == "xgboost":
-            # mlflow.xgboost.autolog()
+            mlflow.xgboost.autolog()
             model = XGBoostModel()
         elif config.model_name == "linear_regression":
-            # mlflow.sklearn.autolog()
+            mlflow.sklearn.autolog()
             model = LinearRegressionModel()
         else:
             raise ValueError("Model name not supported")
