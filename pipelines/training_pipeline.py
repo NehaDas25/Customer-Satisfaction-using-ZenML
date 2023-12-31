@@ -4,9 +4,19 @@ from steps.clean_data import clean_df
 from steps.model_train import train_model
 from steps.evaluate import evaluate_model
 
-@pipeline(enable_cache=False)
+@pipeline(enable_cache=True)
 def train_pipeline(data_path: str):
+    """
+    Args:
+        ingest_data: DataClass
+        clean_data: DataClass
+        model_train: DataClass
+        evaluation: DataClass
+    Returns:
+        mse: float
+        rmse: float
+    """
     df = ingest_df(data_path)
-    clean_df(df)
-    train_model(df)
-    evaluate_model(df)
+    X_train, X_test, y_train, y_test = clean_df(df)
+    model = train_model(X_train, X_test, y_train, y_test)
+    r2_score, rmse = evaluate_model(model, X_test, y_test)
